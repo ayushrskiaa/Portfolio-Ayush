@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import type { ProfileHighlight } from "@/data/profile";
 
@@ -5,7 +6,7 @@ type ProfileHighlightCardProps = {
   highlight: ProfileHighlight;
 };
 
-const iconMap: Record<string, JSX.Element> = {
+const iconMap: Record<string, React.ReactNode> = {
   LeetCode: (
     <Image
       src="/leetcode.png"
