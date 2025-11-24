@@ -1,26 +1,115 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+  --background: #010104;
+  --foreground: #f5f5f5;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-sans), "Space Grotesk", system-ui, sans-serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", monospace;
+  --color-background: #010104;
+  --color-foreground: #f8fafc;
+  --color-card: rgba(255, 255, 255, 0.04);
+  --color-muted: #a1a1aa;
+  --color-accent: #f97316;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(120deg, #22223b 0%, #141123 30%, #383487 100%);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+.bg-mesh {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  width: 100vw;
+  height: 100vh;
+  background:
+    radial-gradient(ellipse 80vw 50vw at 15vw 30vh, #f97316 0%, transparent 70%),
+    radial-gradient(ellipse 60vw 50vw at 90vw 80vh, #2563eb 0%, transparent 70%),
+    radial-gradient(ellipse 90vw 70vw at 80vw 0vh, #c026d3 0%, transparent 75%); 
+  opacity: 0.23;
+  pointer-events: none;
+  animation: background-fade 12s alternate infinite;
+}
+
+@keyframes background-fade {
+  0% {
+    opacity: 0.20;
+    filter: blur(0.5px)
+  }
+  100% {
+    opacity: 0.27;
+    filter: blur(2px);
+  }
+}
+
+.bg-noise {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.11;
+  background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.91' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23a)'/%3E%3C/svg%3E");
+  animation: grain-move 10s linear infinite;
+}
+
+@keyframes grain-move {
+  0% {background-position: 0 0;}
+  100% {background-position: 200px 200px;}
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-fadein {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadein 1.2s cubic-bezier(.79,.06,.53,.92) both;
+}
+
+@keyframes blob-move {
+  0%   { transform: scale(1) translateY(0); }
+  50%  { transform: scale(1.07, 0.95) translateY(22px); }
+  100% { transform: scale(1) translateY(0); }
+}
+.animate-blob-move {
+  animation: blob-move 13s cubic-bezier(.63,.04,.30,.95) infinite alternate;
+}
+
+@keyframes blob-move2 {
+  0%   { transform: scale(1) translateY(0); }
+  50%  { transform: scale(1.05, 1.08) translateY(-18px); }
+  100% { transform: scale(1) translateY(0); }
+}
+.animate-blob-move2 {
+  animation: blob-move2 17s cubic-bezier(.71,.12,.27,1) infinite alternate;
+}
+
+@keyframes pulse-slow {
+  0%,100% { opacity: .2; }
+  60%    { opacity: .45; }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+::selection {
+  background: rgba(249, 115, 22, 0.35);
+  color: #fff;
 }
