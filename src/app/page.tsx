@@ -15,10 +15,12 @@ import {
   projects,
   skillCategories,
 } from "@/data/profile";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Home() {
   const [showHeader, setShowHeader] = useState(true);
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  
   useEffect(() => {
     let lastScroll = window.scrollY;
     let ticking = false;
@@ -39,6 +41,26 @@ export default function Home() {
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleSections((prev) => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
+    );
+
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
   }, []);
 
   return (
@@ -96,34 +118,54 @@ export default function Home() {
           <Hero />
         </div>
         <section id="experience" className="space-y-10">
-          <div className="animate-fadein" style={{ animationDelay: '0.18s', animationFillMode: 'both' }}>
+          <div className={`transition-all duration-1000 ${visibleSections.has('experience') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <SectionHeading kicker="TRACK RECORD" title="Engineering experiences that shaped my craft" />
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
-            {experiences.map((experience) => (
-              <ExperienceCard key={experience.company} experience={experience} />
+            {experiences.map((experience, idx) => (
+              <div
+                key={experience.company}
+                className={`transition-all duration-700 ease-out ${
+                  visibleSections.has('experience')
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-12'
+                }`}
+                style={{ transitionDelay: `${idx * 150}ms` }}
+              >
+                <ExperienceCard experience={experience} />
+              </div>
             ))}
           </div>
         </section>
         <section id="projects" className="space-y-10">
-          <div className="animate-fadein" style={{ animationDelay: '0.34s', animationFillMode: 'both' }}>
+          <div className={`transition-all duration-1000 ${visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <SectionHeading kicker="SELECTED WORK" title="Projects I have worked on" />
           </div>
           <div className="grid gap-6 lg:grid-cols-3">
-            {projects.map((project) => (
-              <ProjectCard key={project.title} project={project} />
+            {projects.map((project, idx) => (
+              <div
+                key={project.title}
+                className={`transition-all duration-700 ease-out ${
+                  visibleSections.has('projects')
+                    ? 'opacity-100 translate-y-0 scale-100'
+                    : 'opacity-0 translate-y-12 scale-95'
+                }`}
+                style={{ transitionDelay: `${idx * 120}ms` }}
+              >
+                <ProjectCard project={project} />
+              </div>
             ))}
           </div>
-          <div className="flex justify-center">
-            <a href="https://github.com/ayushrskiaa?tab=repositories" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/40">
+          <div className={`flex justify-center transition-all duration-1000 ${visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '600ms' }}>
+            <a href="https://github.com/ayushrskiaa?tab=repositories" target="_blank" rel="noreferrer" className="group inline-flex items-center gap-2 rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-white/40 hover:scale-105 hover:shadow-[0_0_20px_rgba(249,115,22,0.3)]">
               Explore more on GitHub
-              <span aria-hidden>↗</span>
+              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
             </a>
           </div>
         </section>
 
         <section id="education" className="space-y-10">
-          <div className="animate-fadein" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
+          <div className={`transition-all duration-1000 ${visibleSections.has('education') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <SectionHeading
               kicker="ACADEMICS & TOOLING"
               title="ECE rigor meets product engineering"
@@ -131,16 +173,40 @@ export default function Home() {
             />
           </div>
           <div className="space-y-6">
-            {education.map((entry) => (
-              <EducationCard key={entry.school} entry={entry} />
+            {education.map((entry, idx) => (
+              <div
+                key={entry.school}
+                className={`transition-all duration-700 ease-out ${
+                  visibleSections.has('education')
+                    ? 'opacity-100 translate-x-0'
+                    : 'opacity-0 -translate-x-12'
+                }`}
+                style={{ transitionDelay: `${idx * 150}ms` }}
+              >
+                <EducationCard entry={entry} />
+              </div>
             ))}
-            <div className="space-y-6 rounded-3xl border border-white/5 bg-white/5 p-6">
+            <div className={`space-y-6 rounded-3xl border border-white/5 bg-white/5 p-6 transition-all duration-1000 ${
+              visibleSections.has('education')
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-12'
+            }`} style={{ transitionDelay: '300ms' }}>
               <p className="text-xs uppercase tracking-[0.4em] text-zinc-500">
                 Skills snapshot
               </p>
               <div className="grid gap-4 sm:grid-cols-2">
-                {skillCategories.map((category) => (
-                  <SkillCategoryCard key={category.title} category={category} />
+                {skillCategories.map((category, idx) => (
+                  <div
+                    key={category.title}
+                    className={`transition-all duration-500 ease-out ${
+                      visibleSections.has('education')
+                        ? 'opacity-100 scale-100'
+                        : 'opacity-0 scale-95'
+                    }`}
+                    style={{ transitionDelay: `${400 + idx * 80}ms` }}
+                  >
+                    <SkillCategoryCard category={category} />
+                  </div>
                 ))}
               </div>
             </div>
@@ -148,7 +214,7 @@ export default function Home() {
         </section>
 
         <section id="profiles" className="space-y-10">
-          <div className="animate-fadein" style={{ animationDelay: '0.66s', animationFillMode: 'both' }}>
+          <div className={`transition-all duration-1000 ${visibleSections.has('profiles') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <SectionHeading
               kicker="CODING PROFILES"
               title="Practice that powers production work"
@@ -156,16 +222,23 @@ export default function Home() {
             />
           </div>
           <div className="grid gap-6 md:grid-cols-3">
-            {profileHighlights.map((highlight) => (
-              <ProfileHighlightCard
+            {profileHighlights.map((highlight, idx) => (
+              <div
                 key={highlight.platform}
-                highlight={highlight}
-              />
+                className={`transition-all duration-700 ease-out ${
+                  visibleSections.has('profiles')
+                    ? 'opacity-100 translate-y-0 rotate-0'
+                    : 'opacity-0 translate-y-12 rotate-2'
+                }`}
+                style={{ transitionDelay: `${idx * 120}ms` }}
+              >
+                <ProfileHighlightCard highlight={highlight} />
+              </div>
             ))}
           </div>
         </section>
 
-        <section id="contact">
+        <section id="contact" className={`transition-all duration-1000 ${visibleSections.has('contact') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <ContactSection />
         </section>
 

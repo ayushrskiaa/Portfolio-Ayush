@@ -6,7 +6,7 @@ type ExperienceCardProps = {
 
 export function ExperienceCard({ experience }: ExperienceCardProps) {
   return (
-    <article className="rounded-3xl border border-white/5 bg-white/5 p-6 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-md transition hover:border-white/15 hover:bg-white/10">
+    <article className="group relative rounded-3xl border border-white/5 bg-white/5 p-6 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-md transition-all duration-500 hover:border-white/15 hover:bg-white/10 hover:scale-[1.02] hover:shadow-[0_40px_140px_rgba(0,0,0,0.6),0_0_40px_rgba(129,140,248,0.15)]">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <div>
           <p className="text-sm uppercase tracking-[0.3em] text-[#818cf8]">
