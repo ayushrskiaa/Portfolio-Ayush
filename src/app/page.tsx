@@ -121,11 +121,11 @@ export default function Home() {
           <div className={`transition-all duration-1000 ${visibleSections.has('experience') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <SectionHeading kicker="TRACK RECORD" title="Engineering experiences that shaped my craft" />
           </div>
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid auto-rows-fr gap-6 lg:grid-cols-2">
             {experiences.map((experience, idx) => (
               <div
                 key={experience.company}
-                className={`transition-all duration-700 ease-out ${
+                className={`flex h-full transition-all duration-700 ease-out ${
                   visibleSections.has('experience')
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-12'
@@ -141,11 +141,11 @@ export default function Home() {
           <div className={`transition-all duration-1000 ${visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <SectionHeading kicker="SELECTED WORK" title="Projects I have worked on" />
           </div>
-          <div className="grid gap-6 lg:grid-cols-3">
+          <div className="grid auto-rows-fr gap-6 lg:grid-cols-3">
             {projects.map((project, idx) => (
               <div
                 key={project.title}
-                className={`transition-all duration-700 ease-out ${
+                className={`flex h-full transition-all duration-700 ease-out ${
                   visibleSections.has('projects')
                     ? 'opacity-100 translate-y-0 scale-100'
                     : 'opacity-0 translate-y-12 scale-95'

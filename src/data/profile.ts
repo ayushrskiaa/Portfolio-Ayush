@@ -73,7 +73,7 @@ export const heroContent = {
 export const stats = [
   { label: "LeetCode rating", value: "1794" },
   { label: "GSooC Rank (An Open Source Program)", value: "270 / 27k" },
-  { label: "Problem Solved", value: "400+" },
+  { label: "Problem Solved (LeetCode+ GeeksforGeeks)", value: "400+" },
 ];
 
 export const experiences: Experience[] = [
