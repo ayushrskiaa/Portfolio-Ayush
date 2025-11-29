@@ -45,23 +45,32 @@ export default function Home() {
     <div className="min-h-screen bg-[#010104] pb-16 text-white">
       <div className="bg-mesh" />
       <div className="bg-noise" />
-      <div className="mx-auto flex max-w-6xl flex-col gap-16 px-6 pt-10 sm:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col gap-16 px-4 pt-10 sm:px-6 lg:px-8">
         <header
           className={`sticky top-6 z-40 transition-all duration-500 ${
             showHeader ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
           }`}
         >
-          <div className="rounded-[999px] border border-white/10 bg-white/5/50 px-6 py-5 shadow-[0_25px_70px_rgba(0,0,0,0.35)] backdrop-blur-lg">
-            <div className="flex flex-wrap items-center justify-between gap-6">
-              <div>
-                <p className="text-xs uppercase tracking-[0.4em] text-zinc-500">
-                  Portfolio
-                </p>
-                <p className="text-2xl font-semibold tracking-[0.25em] text-white">
-                  Ayush Kumar
-                </p>
+          <div className="relative mx-auto max-w-6xl rounded-[999px] border border-white/10 bg-gradient-to-r from-white/[0.08] via-white/[0.06] to-white/[0.08] px-8 py-6 shadow-[0_25px_70px_rgba(0,0,0,0.4),0_0_60px_rgba(249,115,22,0.1)] backdrop-blur-xl">
+            {/* Animated gradient border glow */}
+            <div className="absolute -inset-[1px] rounded-[999px] bg-gradient-to-r from-[#f97316]/20 via-[#c026d3]/20 to-[#2563eb]/20 opacity-60 blur-sm -z-10 animate-gradient-border" />
+            
+            <div className="flex flex-wrap items-center justify-between gap-8">
+              <div className="flex items-center gap-4">
+                <div className="relative">
+                  <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#f97316] to-[#c026d3] opacity-30 blur-md animate-pulse-slow" />
+                  <div className="relative h-12 w-12 rounded-full bg-gradient-to-br from-[#f97316]/40 to-[#c026d3]/40 border border-white/20" />
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.4em] text-zinc-400 font-medium">
+                    Portfolio
+                  </p>
+                  <p className="text-2xl font-bold tracking-[0.15em] text-white bg-gradient-to-r from-white via-zinc-100 to-white bg-clip-text text-transparent">
+                    Ayush Kumar
+                  </p>
+                </div>
               </div>
-              <nav className="flex flex-wrap items-center gap-3 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-zinc-400 sm:text-xs">
+              <nav className="flex flex-wrap items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-zinc-400 sm:text-xs">
                 {[
                   { label: "Overview", href: "#overview" },
                   { label: "Experience", href: "#experience" },
@@ -73,9 +82,10 @@ export default function Home() {
                   <a
                     key={item.label}
                     href={item.href}
-                    className="rounded-full border border-transparent px-3 py-1 transition hover:border-white/20 hover:text-white"
+                    className="group relative rounded-full border border-transparent px-4 py-2 transition-all duration-300 hover:border-white/30 hover:text-white hover:bg-white/5"
                   >
-                    {item.label}
+                    <span className="relative z-10">{item.label}</span>
+                    <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[#f97316]/10 to-[#c026d3]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </a>
                 ))}
               </nav>
