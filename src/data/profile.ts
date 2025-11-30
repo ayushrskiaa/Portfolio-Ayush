@@ -74,6 +74,9 @@ export const stats = [
   { label: "LeetCode rating", value: "1794" },
   { label: "GSooC Rank (An Open Source Program)", value: "270 / 27k" },
   { label: "Problem Solved (LeetCode+ GeeksforGeeks)", value: "400+" },
+  { label: "Projects Completed", value: "10+" },
+  { label: "Technologies Mastered", value: "20+" },
+  { label: "Years of Coding", value: "3+" },
 ];
 
 export const experiences: Experience[] = [
@@ -181,7 +184,7 @@ export const education: Education[] = [
     program: "B.Tech · Electronics & Communication Engineering",
     period: "2022 – Present",
     location: "Imphal, Manipur",
-    details: "CGPA: 8.01 / 10 · Pre-final year · Academic focus on embedded systems + web stacks.",
+    details: "CGPA: 8.01 / 10 · Academic focus on Electronics and Communication Engineering.",
   },
 ];
 

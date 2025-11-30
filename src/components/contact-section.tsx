@@ -9,12 +9,10 @@ export function ContactSection() {
             LET&apos;S TALK
           </p>
           <h2 className="text-4xl font-semibold text-white">
-            Have an idea worth shipping?
+            Do you have any opportunities for me?
           </h2>
           <p className="text-base text-zinc-400">
-            I partner with ambitious teams to build modern product experiences,
-            land polished marketing websites, or mentor interns ramping up on
-            web stacks.
+            I am open to internships and full-time offers in the field of Software Engineering.
           </p>
         </div>
         <div className="w-full max-w-sm rounded-2xl border border-white/5 bg-white/5 p-6">

@@ -11,7 +11,7 @@ export function Hero() {
       <div className="pointer-events-none absolute -top-32 -left-32 h-[38rem] w-[36rem] opacity-50 animate-blob-move rounded-full bg-gradient-to-br from-[#f97316] via-transparent to-[#c026d3] blur-[120px]" style={{zIndex:1}} />
       <div className="pointer-events-none absolute -bottom-20 -right-32 h-[30rem] w-[36rem] opacity-35 animate-blob-move2 rounded-full bg-gradient-to-br from-[#2563eb] via-transparent to-[#7c3aed] blur-[90px]" style={{zIndex:1}} />
       <div className="pointer-events-none absolute left-1/2 top-[40%] h-80 w-80 -translate-x-1/2 opacity-30 animate-pulse-slow rounded-full bg-[#f97316] mix-blend-lighten blur-[100px]" style={{zIndex:2}} />
-      <div className="relative z-10">
+      <div className="relative z-10 space-y-10">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#a5b4fc]">
@@ -58,19 +58,6 @@ export function Hero() {
                   </a>
                 ))}
             </div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-2xl border border-white/5 bg-white/5 p-4 text-center"
-                >
-                  <p className="text-3xl font-semibold text-white">{stat.value}</p>
-                  <p className="text-xs uppercase tracking-[0.3em] text-zinc-400">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
           <div className="relative">
             <div className="absolute inset-6 rounded-[28px] bg-gradient-to-br from-[#f97316] to-[#c026d3] blur-3xl opacity-50" />
@@ -99,6 +86,19 @@ export function Hero() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-6">
+          {stats.map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-2xl border border-white/5 bg-white/5 p-4 text-center transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:scale-105"
+            >
+              <p className="text-3xl font-semibold text-white">{stat.value}</p>
+              <p className="mt-1 text-xs uppercase tracking-[0.3em] text-zinc-400">
+                {stat.label}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -18,30 +18,9 @@ import {
 import { useState, useEffect, useRef } from "react";
 
 export default function Home() {
-  const [showHeader, setShowHeader] = useState(true);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
-  
-  useEffect(() => {
-    let lastScroll = window.scrollY;
-    let ticking = false;
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const curr = window.scrollY;
-          if (curr < 24 || curr < lastScroll) {
-            setShowHeader(true);
-          } else if (curr > lastScroll + 12) {
-            setShowHeader(false);
-          }
-          lastScroll = curr;
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const [headerVisible, setHeaderVisible] = useState(true);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -63,14 +42,38 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    const headerObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setHeaderVisible(entry.isIntersecting);
+        });
+      },
+      { threshold: 0, rootMargin: "-100px 0px 0px 0px" }
+    );
+
+    if (headerRef.current) {
+      headerObserver.observe(headerRef.current);
+    }
+
+    return () => {
+      if (headerRef.current) {
+        headerObserver.unobserve(headerRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#010104] pb-16 text-white">
       <div className="bg-mesh" />
       <div className="bg-noise" />
       <div className="mx-auto flex max-w-7xl flex-col gap-16 px-4 pt-10 sm:px-6 lg:px-8">
-        <header
-          className={`sticky top-6 z-40 transition-all duration-500 ${
-            showHeader ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
+        <header 
+          ref={headerRef}
+          className={`relative z-40 transition-all duration-700 ease-in-out ${
+            headerVisible 
+              ? "opacity-100 translate-y-0 blur-0 scale-100" 
+              : "opacity-0 -translate-y-8 blur-md scale-95 pointer-events-none"
           }`}
         >
           <div className="relative mx-auto max-w-6xl rounded-[999px] border border-white/10 bg-gradient-to-r from-white/[0.08] via-white/[0.06] to-white/[0.08] px-8 py-6 shadow-[0_25px_70px_rgba(0,0,0,0.4),0_0_60px_rgba(249,115,22,0.1)] backdrop-blur-xl">
@@ -221,11 +224,11 @@ export default function Home() {
               description="Daily reps across LeetCode, GFG, and CodeChef keep data structures sharp for real-world shipping."
             />
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3 auto-rows-fr">
             {profileHighlights.map((highlight, idx) => (
               <div
                 key={highlight.platform}
-                className={`transition-all duration-700 ease-out ${
+                className={`h-full transition-all duration-700 ease-out ${
                   visibleSections.has('profiles')
                     ? 'opacity-100 translate-y-0 rotate-0'
                     : 'opacity-0 translate-y-12 rotate-2'
