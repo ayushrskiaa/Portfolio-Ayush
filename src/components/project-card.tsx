@@ -10,7 +10,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/5 bg-white/5 transition-all duration-500 hover:border-white/15 hover:bg-white/10 hover:scale-[1.03] hover:shadow-[0_40px_140px_rgba(0,0,0,0.6),0_0_40px_rgba(249,115,22,0.15)]">
       <div className="relative h-64 w-full flex-shrink-0 overflow-hidden">
         <Image
-          src="https://arstechnica.com/gadgets/2025/08/github-will-be-folded-into-microsoft-proper-as-ceo-steps-down/"
+          src={project.image}
           alt={project.title}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
