@@ -43,6 +43,9 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    const headerElement = headerRef.current;
+    if (!headerElement) return;
+
     const headerObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -52,14 +55,13 @@ export default function Home() {
       { threshold: 0, rootMargin: "-100px 0px 0px 0px" }
     );
 
-    if (headerRef.current) {
-      headerObserver.observe(headerRef.current);
-    }
+    headerObserver.observe(headerElement);
 
     return () => {
-      if (headerRef.current) {
-        headerObserver.unobserve(headerRef.current);
+      if (headerElement) {
+        headerObserver.unobserve(headerElement);
       }
+      headerObserver.disconnect();
     };
   }, []);
 
