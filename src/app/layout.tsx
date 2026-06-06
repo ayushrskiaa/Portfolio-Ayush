@@ -5,40 +5,42 @@ import "./globals.css";
 const sans = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
 });
 
 const mono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ayush-portfolio.vercel.app"),
-  title: "Ayush Kumar · Full-Stack Web Developer",
+  metadataBase: new URL("https://ayushrskiaa.tech"),
+  title: "Ayush Kumar · Full-Stack Developer",
   description:
-    "Ayush Kumar is a full-stack developer and DSA enthusiast from IIIT Manipur building thoughtful web experiences and research tooling.",
+    "Ayush Kumar — ECE student at IIIT Manipur. I build full-stack web apps, CLI tools, and research tooling. Currently interning at Rupeeflo.",
   openGraph: {
-    title: "Ayush Kumar · Product-focused full-stack developer",
+    title: "Ayush Kumar · Full-Stack Developer",
     description:
-      "Engineering immersive UI, performant APIs, and research platforms across India and beyond.",
-    url: "https://ayush-portfolio.vercel.app",
-    siteName: "Ayush Kumar Portfolio",
+      "ECE student at IIIT Manipur. Built tools at ISRO, shipped features for maritime and fintech startups.",
+    url: "https://ayushrskiaa.tech",
+    siteName: "Ayush Kumar",
     images: [
       {
-        url: "https://opengraph.githubassets.com/1/ayushrskiaa/Restaurant-Reservation",
+        url: "https://opengraph.githubassets.com/1/ayushrskiaa/vaultenv",
         width: 1200,
         height: 630,
-        alt: "Ayush Kumar portfolio preview",
+        alt: "Ayush Kumar portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ayush Kumar · Product-focused full-stack developer",
+    title: "Ayush Kumar · Full-Stack Developer",
     description:
-      "Full-stack developer crafting intuitive interfaces, robust systems, and research tooling.",
+      "ECE student at IIIT Manipur. Built tools at ISRO, shipped features for maritime and fintech startups.",
     images: [
-      "https://opengraph.githubassets.com/1/ayushrskiaa/Restaurant-Reservation",
+      "https://opengraph.githubassets.com/1/ayushrskiaa/vaultenv",
     ],
   },
 };

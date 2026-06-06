@@ -40,14 +40,8 @@ body {
 }
 
 @keyframes background-fade {
-  0% {
-    opacity: 0.20;
-    filter: blur(0.5px)
-  }
-  100% {
-    opacity: 0.27;
-    filter: blur(2px);
-  }
+  0% { opacity: 0.20; }
+  100% { opacity: 0.27; }
 }
 
 .bg-noise {
@@ -90,6 +84,7 @@ body {
 }
 .animate-blob-move {
   animation: blob-move 13s cubic-bezier(.63,.04,.30,.95) infinite alternate;
+  will-change: transform;
 }
 
 @keyframes blob-move2 {
@@ -99,6 +94,7 @@ body {
 }
 .animate-blob-move2 {
   animation: blob-move2 17s cubic-bezier(.71,.12,.27,1) infinite alternate;
+  will-change: transform;
 }
 
 @keyframes pulse-slow {

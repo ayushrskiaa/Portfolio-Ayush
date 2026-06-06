@@ -52,13 +52,13 @@ export const heroContent = {
   name: "Ayush Kumar",
   headline: "Open to Software Internships & New Grad SDE Roles",
   subline:
-    "Driven B.Tech (ECE) candidate at IIIT Manipur seeking impactful internship or full-time engineering opportunities. Blending strong DSA problem-solving (top 8% LeetCode) with hands-on product delivery for startups, open source, and research labs. Ready to contribute and grow in dynamic, tech-forward teams.",
+    "ECE student at IIIT Manipur. Built tools at ISRO, shipped features for maritime and fintech startups, and ranked 270 out of 27k in GSSoC. I pick up new tech fast and care about code that actually works in production.",
   availability: "Available for internships & full-time offers",
   location: "Bengaluru • Willing to relocate or work remote",
   avatar: "https://github.com/ayushrskiaa.png",
   ctaPrimary: {
     label: "Connect on LinkedIn",
-    href: "https://www.linkedin.com/in/ayush-kumar-792916257",
+    href: "https://www.linkedin.com/in/ayush-kumar-iiitm",
   },
   ctaSecondary: {
     label: "View GitHub",
@@ -81,16 +81,30 @@ export const stats = [
 
 export const experiences: Experience[] = [
   {
-    company: "Zener Maritime Solutions",
-    role: "SDE Intern",
-    period: "May 2025 – Present",
+    company: "Rupeeflo",
+    role: "Software Developer Intern",
+    period: "Nov 2025 – Present",
     location: "Remote",
     summary:
-      "Shipping naval inspection tooling end-to-end across React, Node.js, and MongoDB stacks.",
+      "Working on product features at a fintech startup — full stack, fast pace.",
     bullets: [
-      "Improved responsiveness by 30% through React optimizations and Node.js performance tuning.",
-      "Secured REST APIs for real-time data capture, trimming latency by 20% under concurrent usage.",
-      "Accelerated releases by 15% by pairing Agile ceremonies with focused code reviews.",
+      "Building and shipping features end-to-end in a TypeScript/React codebase.",
+      "Working with senior engineers on architecture decisions and production deployments.",
+      "Getting deep into fintech — payments, lending flows, and financial data pipelines.",
+    ],
+    link: "https://rupeeflo.com",
+  },
+  {
+    company: "Zener Maritime Solutions",
+    role: "SDE Intern",
+    period: "May 2025 – Nov 2025",
+    location: "Remote",
+    summary:
+      "Built inspection tooling for the naval industry — React frontend, Node.js backend, MongoDB.",
+    bullets: [
+      "Optimized React rendering and Node.js APIs — cut page load time by ~30%.",
+      "Secured REST endpoints for real-time data capture, reduced latency ~20% under load.",
+      "Cut release cycles by ~15% by tightening the review and deployment process.",
     ],
     link: "https://www.zenermaritime.com/",
   },
@@ -100,11 +114,11 @@ export const experiences: Experience[] = [
     period: "Nov 2024 – Jan 2025",
     location: "Gadanki, Andhra Pradesh",
     summary:
-      "Automated radar image analysis pipelines to unlock faster atmospheric research.",
+      "Wrote Python scripts to automate radar image analysis for atmospheric research at NARL.",
     bullets: [
-      "Cut manual data extraction time by 70% with Python scripts for radar signal processing.",
-      "Built analytics that surfaced atmospheric anomalies sooner for senior scientists.",
-      "Presented findings with visualizations that informed ongoing research decisions.",
+      "Cut manual data extraction time by 70% — the team stopped doing it by hand entirely.",
+      "Built scripts to flag atmospheric anomalies in radar data, which sped up the research cycle.",
+      "Made Python visualizations that fed directly into the team's ongoing research reports.",
     ],
   },
   {
@@ -113,11 +127,11 @@ export const experiences: Experience[] = [
     period: "Oct 2024 – Nov 2024",
     location: "Remote",
     summary:
-      "Partnered with product teams to translate research insights into polished web experiences.",
+      "Designed product screens for a data storytelling platform based on user research.",
     bullets: [
-      "Conducted weekly user interviews to validate flows for data storytelling tools.",
-      "Delivered high-fidelity Figma specs that unblocked three squads simultaneously.",
-      "Standardized design tokens that sped up front-end implementation in React.",
+      "Ran weekly user interviews to understand how people interact with data visualizations.",
+      "Built high-fidelity Figma screens that three engineering squads shipped from directly.",
+      "Set up a design token system that cut back-and-forth between design and eng.",
     ],
   },
   {
@@ -126,19 +140,41 @@ export const experiences: Experience[] = [
     period: "May 2024 – Aug 2024",
     location: "Remote",
     summary:
-      "Shipped production-grade features across community React and Node.js repositories.",
+      "Open source contributor — ranked 270 out of 27,000 participants.",
     bullets: [
-      "Ranked 270/27,000 contributors thanks to steady PRs and mentorship.",
-      "Focused on accessibility fixes, automation, and multilingual support libraries.",
+      "Merged PRs across React and Node.js repos, focusing on accessibility and i18n fixes.",
+      "Reviewed incoming patches and helped newer contributors get their first PRs merged.",
     ],
   },
 ];
 
 export const projects: Project[] = [
   {
+    title: "VaultEnv — Encrypted Secrets Manager",
+    description:
+      "CLI tool that stores API keys and credentials in an AES-256-GCM encrypted local vault and injects them into apps at runtime — keeping secrets out of shell environments, logs, and AI agents with zero code changes required.",
+    stack: ["Node.js", "JavaScript", "AES-256-GCM", "PBKDF2", "Commander", "keytar"],
+    repoUrl: "https://github.com/ayushrskiaa/vaultenv",
+    liveUrl: "https://vaultenv-fe.vercel.app",
+    image: "https://opengraph.githubassets.com/1/ayushrskiaa/vaultenv",
+    links: [
+      { label: "CLI Package", href: "https://github.com/ayushrskiaa/vaultenv" },
+      { label: "Web Dashboard", href: "https://vaultenv-fe.vercel.app" },
+    ],
+  },
+  {
+    title: "Claude Monitor — Real-Time AI Observability",
+    description:
+      "Real-time dashboard that streams every Claude Code tool call to a live UI — with multi-tenant API key isolation, automatic flagging of sensitive file access, session filtering, and event distribution charts.",
+    stack: ["Python", "FastAPI", "React", "Vite", "WebSocket", "SQLite", "Fly.io"],
+    repoUrl: "https://github.com/ayushrskiaa/claude-monitor",
+    liveUrl: "https://claude-monitor-fe.vercel.app",
+    image: "https://opengraph.githubassets.com/1/ayushrskiaa/claude-monitor",
+  },
+  {
     title: "Orderlytics — Restaurant Control Suite",
     description:
-      "Deployed a full-stack restaurant OS with secure payments, interactive analytics, and automated order workflows that cut manual effort by 40% while staying responsive under peak load.",
+      "Full-stack restaurant management system — handles orders, payments, and analytics. Reduced manual work by ~40% and held up fine under peak load.",
     stack: [
       "JavaScript",
       "React",
@@ -159,22 +195,6 @@ export const projects: Project[] = [
     stack: ["HTML", "CSS", "JavaScript", "Flask", "TinyDB", "Hindi-XLit"],
     repoUrl: "https://github.com/ayushrskiaa/BP-writingTool",
     image: "https://opengraph.githubassets.com/1/ayushrskiaa/BP-writingTool",
-  },
-  {
-    title: "EverHigh — E-commerce Suite",
-    description:
-      "Crafted an engaging storefront with smooth animations, wishlist/cart/checkout flows, plus an admin ops hub with product management controls and Recharts-powered insights.",
-    stack: ["React", "Tailwind", "Recharts", "Figma"],
-    repoUrl: "https://github.com/ayushrskiaa/EverHigh",
-    liveUrl: "https://everhigh-user-dashboard.vercel.app",
-    links: [
-      { label: "User Dashboard", href: "https://everhigh-user-dashboard.vercel.app" },
-      {
-        label: "Admin Dashboard",
-        href: "https://everhigh-admin-dashborad.vercel.app",
-      },
-    ],
-    image: "https://opengraph.githubassets.com/1/ayushrskiaa/EverHigh",
   },
 ];
 
@@ -210,8 +230,8 @@ export const skillCategories: SkillCategory[] = [
     items: ["MongoDB", "Firebase", "MySQL", "Cloudinary"],
   },
   {
-    title: "Deployment & Hosting",
-    items: ["Vercel", "Render", "GitHub Actions"],
+    title: "Deployment & DevOps",
+    items: ["Vercel", "Render", "AWS", "Docker", "Kubernetes", "GitHub Actions"],
   },
   {
     title: "Tools & Platforms",
@@ -228,13 +248,13 @@ export const profileHighlights: ProfileHighlight[] = [
   },
   {
     platform: "GeeksforGeeks",
-    summary: "150+ solutions with top decile accuracy across topics.",
+    summary: "150+ problems solved, consistently accurate across topics.",
     metric: "Top 10% accuracy",
     link: "https://auth.geeksforgeeks.org/user/ayushrskiaa/practice",
   },
   {
     platform: "CodeChef",
-    summary: "Active in rated contests, constantly iterating on problem solving.",
+    summary: "Compete regularly in rated contests to stay sharp.",
     metric: "2★ rating",
     link: "https://www.codechef.com/users/ayushrskiaa",
   },
@@ -245,7 +265,7 @@ export const insights: Insight[] = [
     title: "Ship UI faster with design tokens + Tailwind",
     summary:
       "A playbook I used at DataPlay to keep engineering velocity high while polishing UX micro-interactions.",
-    link: "https://www.linkedin.com/in/ayush-kumar-792916257",
+    link: "https://www.linkedin.com/in/ayush-kumar-iiitm",
   },
   {
     title: "Scaling auth for open-source projects",
@@ -257,7 +277,7 @@ export const insights: Insight[] = [
     title: "Turning radar plots into actionable insights",
     summary:
       "How we modernized atmospheric research pipelines during my ISRO internship.",
-    link: "https://www.linkedin.com/in/ayush-kumar-792916257/details/experience",
+    link: "https://www.linkedin.com/in/ayush-kumar-iiitm/details/experience",
   },
 ];
 
@@ -279,8 +299,8 @@ export const contactLinks = [
   },
   {
     label: "LinkedIn",
-    value: "in/ayush-kumar-792916257",
-    href: "https://www.linkedin.com/in/ayush-kumar-792916257",
+    value: "in/ayush-kumar-iiitm",
+    href: "https://www.linkedin.com/in/ayush-kumar-iiitm",
   },
 ];
 

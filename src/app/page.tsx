@@ -123,19 +123,19 @@ export default function Home() {
           <Hero />
         </div>
         <section id="experience" className="space-y-10">
-          <div className={`transition-all duration-1000 ${visibleSections.has('experience') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <SectionHeading kicker="TRACK RECORD" title="Engineering experiences that shaped my craft" />
+          <div className={`transition-all duration-700 ${visibleSections.has('experience') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <SectionHeading kicker="EXPERIENCE" title="Where I've worked" />
           </div>
           <div className="grid auto-rows-fr gap-6 lg:grid-cols-2">
             {experiences.map((experience, idx) => (
               <div
                 key={experience.company}
-                className={`flex h-full transition-all duration-700 ease-out ${
+                className={`flex h-full transition-all duration-500 ease-out ${
                   visibleSections.has('experience')
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-12'
                 }`}
-                style={{ transitionDelay: `${idx * 150}ms` }}
+                style={{ transitionDelay: `${idx * 100}ms` }}
               >
                 <ExperienceCard experience={experience} />
               </div>
@@ -143,25 +143,25 @@ export default function Home() {
           </div>
         </section>
         <section id="projects" className="space-y-10">
-          <div className={`transition-all duration-1000 ${visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <SectionHeading kicker="SELECTED WORK" title="Projects I have worked on" />
+          <div className={`transition-all duration-700 ${visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <SectionHeading kicker="PROJECTS" title="Things I've built" />
           </div>
           <div className="grid auto-rows-fr gap-6 lg:grid-cols-3">
             {projects.map((project, idx) => (
               <div
                 key={project.title}
-                className={`flex h-full transition-all duration-700 ease-out ${
+                className={`flex h-full transition-all duration-500 ease-out ${
                   visibleSections.has('projects')
                     ? 'opacity-100 translate-y-0 scale-100'
                     : 'opacity-0 translate-y-12 scale-95'
                 }`}
-                style={{ transitionDelay: `${idx * 120}ms` }}
+                style={{ transitionDelay: `${idx * 80}ms` }}
               >
                 <ProjectCard project={project} />
               </div>
             ))}
           </div>
-          <div className={`flex justify-center transition-all duration-1000 ${visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '600ms' }}>
+          <div className={`flex justify-center transition-all duration-700 ${visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '400ms' }}>
             <a href="https://github.com/ayushrskiaa?tab=repositories" target="_blank" rel="noreferrer" className="group inline-flex items-center gap-2 rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-white/40 hover:scale-105 hover:shadow-[0_0_20px_rgba(249,115,22,0.3)]">
               Explore more on GitHub
               <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
@@ -170,32 +170,32 @@ export default function Home() {
         </section>
 
         <section id="education" className="space-y-10">
-          <div className={`transition-all duration-1000 ${visibleSections.has('education') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`transition-all duration-700 ${visibleSections.has('education') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <SectionHeading
-              kicker="ACADEMICS & TOOLING"
-              title="ECE rigor meets product engineering"
-              description="Formal training from IIIT Manipur backed by a versatile skill stack and consistent coding practice."
+              kicker="EDUCATION"
+              title="Background"
+              description="B.Tech ECE at IIIT Manipur, with hands-on experience across the full stack."
             />
           </div>
           <div className="space-y-6">
             {education.map((entry, idx) => (
               <div
                 key={entry.school}
-                className={`transition-all duration-700 ease-out ${
+                className={`transition-all duration-500 ease-out ${
                   visibleSections.has('education')
                     ? 'opacity-100 translate-x-0'
                     : 'opacity-0 -translate-x-12'
                 }`}
-                style={{ transitionDelay: `${idx * 150}ms` }}
+                style={{ transitionDelay: `${idx * 100}ms` }}
               >
                 <EducationCard entry={entry} />
               </div>
             ))}
-            <div className={`space-y-6 rounded-3xl border border-white/5 bg-white/5 p-6 transition-all duration-1000 ${
+            <div className={`space-y-6 rounded-3xl border border-white/5 bg-white/5 p-6 transition-all duration-700 ${
               visibleSections.has('education')
                 ? 'opacity-100 translate-y-0'
                 : 'opacity-0 translate-y-12'
-            }`} style={{ transitionDelay: '300ms' }}>
+            }`} style={{ transitionDelay: '200ms' }}>
               <p className="text-xs uppercase tracking-[0.4em] text-zinc-500">
                 Skills snapshot
               </p>
@@ -203,12 +203,12 @@ export default function Home() {
                 {skillCategories.map((category, idx) => (
                   <div
                     key={category.title}
-                    className={`transition-all duration-500 ease-out ${
+                    className={`transition-all duration-400 ease-out ${
                       visibleSections.has('education')
                         ? 'opacity-100 scale-100'
                         : 'opacity-0 scale-95'
                     }`}
-                    style={{ transitionDelay: `${400 + idx * 80}ms` }}
+                    style={{ transitionDelay: `${250 + idx * 60}ms` }}
                   >
                     <SkillCategoryCard category={category} />
                   </div>
@@ -219,23 +219,23 @@ export default function Home() {
         </section>
 
         <section id="profiles" className="space-y-10">
-          <div className={`transition-all duration-1000 ${visibleSections.has('profiles') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`transition-all duration-700 ${visibleSections.has('profiles') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <SectionHeading
-              kicker="CODING PROFILES"
-              title="Practice that powers production work"
-              description="Daily reps across LeetCode, GFG, and CodeChef keep data structures sharp for real-world shipping."
+              kicker="COMPETITIVE CODING"
+              title="Where I practice"
+              description="Top 8% on LeetCode with 400+ problems solved across platforms."
             />
           </div>
           <div className="grid gap-6 md:grid-cols-3 auto-rows-fr">
             {profileHighlights.map((highlight, idx) => (
               <div
                 key={highlight.platform}
-                className={`h-full transition-all duration-700 ease-out ${
+                className={`h-full transition-all duration-500 ease-out ${
                   visibleSections.has('profiles')
                     ? 'opacity-100 translate-y-0 rotate-0'
                     : 'opacity-0 translate-y-12 rotate-2'
                 }`}
-                style={{ transitionDelay: `${idx * 120}ms` }}
+                style={{ transitionDelay: `${idx * 80}ms` }}
               >
                 <ProfileHighlightCard highlight={highlight} />
               </div>
@@ -243,7 +243,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className={`transition-all duration-1000 ${visibleSections.has('contact') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <section id="contact" className={`transition-all duration-700 ${visibleSections.has('contact') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <ContactSection />
         </section>
 

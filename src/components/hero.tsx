@@ -70,18 +70,19 @@ export function Hero() {
                     fill
                     sizes="192px"
                     className="object-cover"
+                    priority
                   />
                 </div>
                 <p className="mt-6 text-sm uppercase tracking-[0.4em] text-zinc-400">
-                  Aspiring software engineer
+                  Software developer
                 </p>
                 <p className="mt-2 text-2xl font-semibold text-white">
-                  Turning research into real products
+                  I build things for research labs and startups.
                 </p>
                 <p className="mt-3 text-sm text-zinc-400">
-                  I love translating complex problem statements into reliable,
-                  human-friendly tools across labs, startups, and open-source
-                  teams.
+                  Started with competitive coding, moved into web dev — now I
+                  build full-stack products for startups and do the occasional
+                  research project.
                 </p>
               </div>
             </div>
